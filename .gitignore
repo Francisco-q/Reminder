@@ -1,0 +1,56 @@
+# Dependencies
+MedicationReminderRN/node_modules/
+MedicationReminderRN/package-lock.json
+
+# Build outputs
+MedicationReminderRN/android/app/build/
+MedicationReminderRN/android/build/
+MedicationReminderRN/android/.gradle/
+MedicationReminderRN/android/app/.gradle/
+MedicationReminderRN/android/gradle-*/
+MedicationReminderRN/android/*.zip
+
+# Temporary configuration files
+MedicationReminderRN/android/app/build.gradle.old
+MedicationReminderRN/android/app/build.gradle.new
+MedicationReminderRN/android/settings.gradle.old
+MedicationReminderRN/android/settings.gradle.new
+
+# iOS (future)
+MedicationReminderRN/ios/build/
+MedicationReminderRN/ios/Pods/
+
+# Metro
+MedicationReminderRN/.metro-health-check*
+
+# Debug files
+MedicationReminderRN/android/app/debug.keystore
+MedicationReminderRN/android/local.properties
+
+# IDE
+.vscode/
+MedicationReminderRN/.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+.tmp/
+.cache/
+
+# React Native
+MedicationReminderRN/.expo/
+MedicationReminderRN/dist/
+MedicationReminderRN/web-build/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
