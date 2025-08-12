@@ -31,13 +31,14 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# Third-party apps - Commented temporarily for basic testing
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
     'drf_spectacular',
-    'django_celery_beat',
-    'django_celery_results',
+    # 'django_celery_beat',      # Commented - requires Redis
+    # 'django_celery_results',   # Commented - requires Redis
 ]
 
 # Vertical Slices - Each app represents a business capability
@@ -45,11 +46,11 @@ LOCAL_APPS = [
     'apps.core',           # Shared utilities and base classes
     'apps.users',          # User management
     'apps.authentication', # Auth & JWT tokens
-    'apps.medications',    # Medication CRUD & management
-    'apps.schedules',      # Daily schedules & timing
-    'apps.notifications',  # Push notifications & alerts
-    'apps.analytics',      # Progress tracking & statistics
-    'apps.monitoring',     # System monitoring & frontend-backend sync
+    # 'apps.medications',    # Medication CRUD & management - commented (uses ArrayField)
+    # 'apps.schedules',      # Daily schedules & timing - commented (views don't exist)
+    # 'apps.notifications',  # Push notifications & alerts (comentado temporalmente)
+    # 'apps.analytics',      # Progress tracking & statistics (comentado temporalmente)
+    'apps.monitoring',     # System monitoring & frontend-backend sync - **RE-HABILITADO con SQLite**
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -89,14 +90,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME', default='medication_reminder_db'),
-        'USER': env('DB_USER', default='postgres'),
-        'PASSWORD': env('DB_PASSWORD', default='password'),
-        'HOST': env('DB_HOST', default='localhost'),
-        'PORT': env('DB_PORT', default='5432'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # PostgreSQL settings commented for testing
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': env('DB_NAME', default='medication_reminder_db'),
+        # 'USER': env('DB_USER', default='postgres'),
+        # 'PASSWORD': env('DB_PASSWORD', default='password'),
+        # 'HOST': env('DB_HOST', default='localhost'),
+        # 'PORT': env('DB_PORT', default='5432'),
         'OPTIONS': {
-            'charset': 'utf8',
+            # 'charset': 'utf8',
         },
         'ATOMIC_REQUESTS': True,
     }
@@ -193,14 +197,14 @@ SPECTACULAR_SETTINGS = {
     'SCHEMA_PATH_PREFIX': '/api/',
 }
 
-# Celery Configuration (for background tasks)
-CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://localhost:6379/0')
-CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='redis://localhost:6379/0')
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = TIME_ZONE
-CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+# Celery Configuration (for background tasks) - Commented for testing
+# CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://localhost:6379/0')
+# CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='redis://localhost:6379/0')
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_TIMEZONE = TIME_ZONE
+# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 # Logging
 LOGGING = {

@@ -13,15 +13,15 @@ environ.Env.read_env(BASE_DIR / '.env')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '[::1]']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '[::1]', 'testserver']  # testserver for Django tests
 
 # Development-specific apps
 INSTALLED_APPS += [
-    'django_extensions',
-    'debug_toolbar',
+    # 'django_extensions',  # Comentado temporalmente para desarrollo rápido
+    # 'debug_toolbar',      # Comentado temporalmente para desarrollo rápido
 ]
 
-MIDDLEWARE.insert(1, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+# MIDDLEWARE.insert(1, 'debug_toolbar.middleware.DebugToolbarMiddleware')  # Comentado temporalmente
 
 # Debug toolbar configuration
 INTERNAL_IPS = [
@@ -45,16 +45,16 @@ CORS_ALLOWED_ORIGINS = [
     'http://10.0.2.2:8000',   # Android emulator
 ]
 
-# Cache (Redis for development)
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': env('REDIS_URL', default='redis://127.0.0.1:6379/1'),
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+# Cache (Redis for development) - Commented for testing
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': env('REDIS_URL', default='redis://127.0.0.1:6379/1'),
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 
 # Logging - More verbose in development
 LOGGING['handlers']['console']['level'] = 'DEBUG'
