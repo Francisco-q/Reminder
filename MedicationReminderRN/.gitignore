@@ -1,0 +1,234 @@
+# ============================================================================
+# 📱 React Native Frontend - .gitignore
+# Specific rules for React Native Medication Reminder app
+# ============================================================================
+
+# ============================================================================
+# 🔐 CRITICAL SECURITY - NEVER COMMIT
+# ============================================================================
+
+# Environment variables
+.env*
+!.env.example
+*.env
+.env.local
+.env.development
+.env.production
+
+# API Keys and secrets
+**/secrets/
+**/keys/
+android/app/google-services.json
+ios/GoogleService-Info.plist
+api-keys.json
+
+# Signing keys
+android/app/*.keystore
+android/app/*.jks
+!android/app/debug.keystore
+
+# ============================================================================
+# 📦 DEPENDENCIES
+# ============================================================================
+
+# npm
+node_modules/
+npm-debug.log*
+npm-error.log*
+package-lock.json
+
+# Yarn
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+
+# pnpm
+pnpm-debug.log*
+pnpm-error.log*
+
+# ============================================================================
+# 🤖 ANDROID BUILD
+# ============================================================================
+
+# Android build outputs
+android/app/build/
+android/build/
+android/.gradle/
+android/app/.gradle/
+android/gradle-*/
+android/*.zip
+android/local.properties
+
+# Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# NDK
+obj/
+
+# Generated files
+android/app/src/main/assets/index.android.bundle*
+android/app/src/main/res/drawable-*/
+android/app/src/main/res/raw/
+
+# ============================================================================
+# 🍎 iOS BUILD
+# ============================================================================
+
+# iOS build outputs
+ios/build/
+ios/Pods/
+ios/.xcode.env.local
+
+# Xcode
+*.xcworkspace
+!default.xcworkspace
+xcuserdata/
+*.xcscmblueprint
+
+# CocoaPods
+ios/Podfile.lock
+
+# Generated files
+ios/main.jsbundle*
+ios/*.xcarchive
+
+# ============================================================================
+# ⚡ METRO & REACT NATIVE
+# ============================================================================
+
+# Metro bundler cache
+.metro-health-check*
+metro-cache/
+.metro/
+
+# React Native cache
+.react-native/
+
+# Flipper
+Flipper-folly
+
+# ============================================================================
+# 🔧 EXPO (if using)
+# ============================================================================
+
+.expo/
+dist/
+web-build/
+.expo-shared/
+
+# ============================================================================
+# 📱 PLATFORM SPECIFIC
+# ============================================================================
+
+# Temporary configuration files
+android/app/build.gradle.old
+android/app/build.gradle.new
+android/settings.gradle.old
+android/settings.gradle.new
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# ============================================================================
+# 💻 DEVELOPMENT FILES
+# ============================================================================
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+temp/
+
+# ============================================================================
+# 📊 LOGS & DEBUGGING
+# ============================================================================
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Debug files
+.vscode/launch.json
+flipper-server-state
+
+# Crash logs
+ios/CrashReporter/
+
+# ============================================================================
+# 🧪 TESTING
+# ============================================================================
+
+# Jest
+coverage/
+.jest/
+
+# Detox
+.detoxrc.json
+
+# ============================================================================
+# 🚀 BUILD & DEPLOYMENT
+# ============================================================================
+
+# Bundle artifacts
+*.jsbundle
+
+# Generated sourcemaps
+*.map
+
+# Hermes artifacts
+hermesc
+*.hbc
+
+# ============================================================================
+# 📱 APP SPECIFIC
+# ============================================================================
+
+# User data and caches
+UserData/
+Cache/
+tmp/
+
+# Generated screenshots
+screenshots/
+test_screenshots/
+
+# APK/IPA files
+*.apk
+*.ipa
+
+# ============================================================================
+# END OF REACT NATIVE .GITIGNORE
+# ============================================================================
