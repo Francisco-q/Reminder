@@ -1,14 +1,156 @@
+# ============================================================================
+# 💊 Medication Reminder - Complete .gitignore
+# Covers React Native Frontend, Django Backend, and Monitoring System
+# ============================================================================
+
+# ============================================================================
+# 🔐 SENSITIVE & PRIVATE FILES (CRITICAL - NEVER COMMIT)
+# ============================================================================
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.test
+*.env
+.env.*
+
+# API Keys and secrets
+**/secrets/
+**/keys/
+**/*secret*
+**/*key*
+**/*password*
+**/*credential*
+
+# Database files
+*.sqlite3
+*.sqlite
+*.db
+db.sqlite3
+*.dump
+
+# Security certificates and keys
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.keystore
+!debug.keystore
+
+# ============================================================================
+# 🔧 DJANGO BACKEND
+# ============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Django specific
+/static/
+/staticfiles/
+/media/
+local_settings.py
+db.sqlite3-journal
+/logs/
+*.log
+
+# Django migrations (optional - uncomment if you don't want to version migrations)
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Redis dump
+dump.rdb
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+.env/
+medication_reminder_env/
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# ============================================================================
+# 📱 REACT NATIVE FRONTEND
+# ============================================================================
+
 # Dependencies
 MedicationReminderRN/node_modules/
+MedicationReminderRN/npm-debug.log*
+MedicationReminderRN/yarn-debug.log*
+MedicationReminderRN/yarn-error.log*
 MedicationReminderRN/package-lock.json
+MedicationReminderRN/yarn.lock
 
-# Build outputs
+# React Native
 MedicationReminderRN/android/app/build/
 MedicationReminderRN/android/build/
 MedicationReminderRN/android/.gradle/
 MedicationReminderRN/android/app/.gradle/
 MedicationReminderRN/android/gradle-*/
 MedicationReminderRN/android/*.zip
+MedicationReminderRN/android/app/debug.keystore
+MedicationReminderRN/android/local.properties
+
+# iOS Build
+MedicationReminderRN/ios/build/
+MedicationReminderRN/ios/Pods/
+MedicationReminderRN/ios/.xcode.env.local
+
+# Metro
+MedicationReminderRN/.metro-health-check*
+MedicationReminderRN/metro-cache/
+
+# Flipper
+MedicationReminderRN/ios/Podfile.lock
 
 # Temporary configuration files
 MedicationReminderRN/android/app/build.gradle.old
@@ -16,41 +158,199 @@ MedicationReminderRN/android/app/build.gradle.new
 MedicationReminderRN/android/settings.gradle.old
 MedicationReminderRN/android/settings.gradle.new
 
-# iOS (future)
-MedicationReminderRN/ios/build/
-MedicationReminderRN/ios/Pods/
-
-# Metro
-MedicationReminderRN/.metro-health-check*
-
-# Debug files
-MedicationReminderRN/android/app/debug.keystore
-MedicationReminderRN/android/local.properties
-
-# IDE
-.vscode/
-MedicationReminderRN/.vscode/
-.idea/
-*.swp
-*.swo
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Temporary files
-.tmp/
-.cache/
-
-# React Native
+# Expo (if using Expo)
 MedicationReminderRN/.expo/
 MedicationReminderRN/dist/
 MedicationReminderRN/web-build/
 
-# Environment variables
-.env
-.env.local
-.env.production
-.env.development
+# React Native specific
+MedicationReminderRN/android/app/src/main/assets/index.android.bundle*
+MedicationReminderRN/ios/main.jsbundle*
+
+# ============================================================================
+# 🔍 MONITORING SYSTEM
+# ============================================================================
+
+# Monitoring reports and exports
+**/monitoring_reports/
+**/exports/
+**/*_report.json
+**/*_report.csv
+**/*_report.txt
+**/*_export.*
+
+# Monitoring logs
+monitoring.log
+monitoring_*.log
+api_tests.log
+health_checks.log
+
+# Monitoring temporary files
+**/monitoring_temp/
+**/monitoring_cache/
+
+# ============================================================================
+# 🐳 DOCKER & DEPLOYMENT
+# ============================================================================
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Deployment
+.deploy/
+deployment/
+.kubernetes/
+k8s/
+
+# ============================================================================
+# 💻 GENERAL DEVELOPMENT
+# ============================================================================
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.cache/
+.temporary/
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# ============================================================================
+# 📊 TESTING & ANALYSIS
+# ============================================================================
+
+# Testing
+.nyc_output
+coverage/
+*.lcov
+
+# Jest
+coverage/
+.jest/
+
+# Pytest
+.pytest_cache/
+.coverage
+
+# ============================================================================
+# 🔧 BUILD & DISTRIBUTION
+# ============================================================================
+
+# Build outputs
+build/
+dist/
+out/
+
+# Generated files
+generated/
+auto-generated/
+
+# Minified files
+*.min.js
+*.min.css
+
+# Source maps (optional - uncomment if you don't want source maps)
+# *.map
+
+# ============================================================================
+# 📱 MOBILE SPECIFIC
+# ============================================================================
+
+# Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# NDK
+obj/
+
+# IntelliJ
+*.iws
+
+# Keystore files (keep debug.keystore for development)
+*.jks
+*.keystore
+!debug.keystore
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# ============================================================================
+# 🎯 PROJECT SPECIFIC
+# ============================================================================
+
+# Custom monitoring configurations
+monitoring_config.json
+custom_feature_mapping.json
+
+# User-generated reports
+user_reports/
+custom_exports/
+
+# Development databases
+development.db
+test.db
+
+# Local development overrides
+local_settings.py
+development_local.py
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+*_old.*
+
+# ============================================================================
+# END OF GITIGNORE
+# ============================================================================
