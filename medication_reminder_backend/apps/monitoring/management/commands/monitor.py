@@ -25,7 +25,7 @@ class Command(BaseCommand):
         )
         
         parser.add_argument(
-            '--version',
+            '--version-num',
             type=str,
             help='Version number for create-version action'
         )
@@ -213,7 +213,7 @@ class Command(BaseCommand):
 
     def create_version(self, options):
         """Create new system version"""
-        version_number = options['version']
+        version_number = options['version_num']
         if not version_number:
             raise CommandError('--version is required for create-version action')
         
