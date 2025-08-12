@@ -1,0 +1,329 @@
+# ============================================================================
+# 💊 Medication Reminder Django Backend - .gitignore
+# Specific rules for Django backend and monitoring system
+# ============================================================================
+
+# ============================================================================
+# 🔐 CRITICAL SECURITY - NEVER COMMIT
+# ============================================================================
+
+# Environment variables and secrets
+.env*
+!.env.example
+*.env
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# Database credentials and files
+*.sqlite3
+*.sqlite
+db.sqlite3
+*.db
+*.dump
+database.conf
+
+# Secret keys and certificates
+*secret*
+*key*
+*.pem
+*.crt
+*.cert
+*.p12
+
+# ============================================================================
+# 🐍 PYTHON & DJANGO
+# ============================================================================
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+.env/
+medication_reminder_env/
+django_env/
+
+# ============================================================================
+# 🔧 DJANGO SPECIFIC
+# ============================================================================
+
+# Django generated files
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/static/
+/staticfiles/
+/media/
+staticfiles/
+mediafiles/
+
+# Django migrations (uncomment if you don't want to version migrations)
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# Django cache
+.cache/
+django_cache/
+
+# ============================================================================
+# 🔍 MONITORING SYSTEM FILES
+# ============================================================================
+
+# Monitoring reports and exports
+monitoring_reports/
+monitoring_exports/
+*_report.json
+*_report.csv
+*_report.txt
+*_export.*
+monitoring_*.log
+api_tests_*.json
+health_check_*.log
+system_report_*.json
+
+# Monitoring temporary files
+monitoring_temp/
+monitoring_cache/
+.monitoring_cache/
+
+# Custom monitoring configurations
+monitoring_config_local.json
+custom_feature_mapping.json
+user_monitoring_settings.json
+
+# ============================================================================
+# 🔄 CELERY & REDIS
+# ============================================================================
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+celery_worker.log
+celery_beat.log
+
+# Redis
+dump.rdb
+redis.log
+
+# ============================================================================
+# 🧪 TESTING & COVERAGE
+# ============================================================================
+
+# Coverage reports
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+coverage.xml
+*.cover
+.hypothesis/
+.cache
+nosetests.xml
+
+# Test databases
+test_*.db
+test.sqlite3
+test_database.json
+
+# ============================================================================
+# 📊 LOGS & DEBUGGING
+# ============================================================================
+
+# Application logs
+*.log
+/logs/
+django.log
+celery.log
+monitoring.log
+api.log
+debug.log
+
+# Error reports
+error_reports/
+crash_reports/
+*.crash
+
+# ============================================================================
+# 💻 DEVELOPMENT FILES
+# ============================================================================
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+temp/
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+*_old.*
+
+# ============================================================================
+# 🚀 DEPLOYMENT & DOCKER
+# ============================================================================
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Deployment configs
+deployment_local.py
+production_local.py
+staging_settings.py
+
+# Kubernetes
+k8s/local/
+.kubernetes/
+
+# ============================================================================
+# 📱 PROJECT SPECIFIC
+# ============================================================================
+
+# User uploaded files
+user_uploads/
+user_media/
+
+# Generated documentation
+docs/_build/
+docs/generated/
+
+# Local development overrides
+local_overrides/
+dev_settings_local.py
+
+# ============================================================================
+# END OF BACKEND .GITIGNORE
+# ============================================================================
+
+# Virtual environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+static/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Database backups
+*.dump
+*.sql
+
+# SSL certificates
+*.pem
+*.key
+*.crt
