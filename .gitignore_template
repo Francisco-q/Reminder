@@ -1,0 +1,211 @@
+# ============================================================================
+# 💊 Medication Reminder - .gitignore Template & Documentation
+# ============================================================================
+# 
+# Este archivo sirve como documentación de las reglas de .gitignore del proyecto
+# y como plantilla para configuraciones específicas por desarrollador.
+#
+# IMPORTANTE: Este archivo ES versionado para documentación.
+# Los archivos .gitignore reales están en sus respectivos directorios.
+# ============================================================================
+
+# ============================================================================
+# 📁 ESTRUCTURA DE .GITIGNORE EN EL PROYECTO
+# ============================================================================
+
+# Tenemos múltiples archivos .gitignore para mejor organización:
+
+# /.gitignore                              <- Principal (este nivel)
+# /medication_reminder_backend/.gitignore  <- Backend Django específico  
+# /MedicationReminderRN/.gitignore        <- Frontend React Native específico
+
+# ============================================================================
+# 🔐 ARCHIVOS CRÍTICOS QUE NUNCA DEBEN SUBIRSE
+# ============================================================================
+
+# 1. CREDENCIALES Y SECRETS
+#    - .env* (todas las variantes)
+#    - API keys
+#    - Certificados de seguridad
+#    - Keystores de Android (excepto debug)
+#    - Archivos de configuración con passwords
+
+# 2. BASES DE DATOS
+#    - *.sqlite3, *.db
+#    - Dumps de bases de datos
+#    - Archivos de configuración de DB con credenciales
+
+# 3. ARCHIVOS DE SESIÓN Y CACHE
+#    - Redis dumps
+#    - Archivos de sesión de Django
+#    - Cache de aplicaciones
+
+# ============================================================================
+# 📱 REACT NATIVE - ARCHIVOS A IGNORAR
+# ============================================================================
+
+# BUILDS Y DEPENDENCIAS:
+node_modules/              # Dependencias npm/yarn
+android/build/             # Build de Android
+ios/build/                 # Build de iOS
+android/.gradle/           # Cache de Gradle
+
+# ARCHIVOS GENERADOS:
+*.jsbundle                 # Bundles compilados
+*.map                      # Source maps
+android/app/src/main/assets/index.android.bundle
+
+# CONFIGURACIÓN LOCAL:
+android/local.properties   # Configuración local Android
+ios/Pods/                  # CocoaPods iOS
+.metro-health-check*       # Cache Metro
+
+# CERTIFICADOS:
+android/app/*.keystore     # Keystores (excepto debug)
+ios/GoogleService-Info.plist # Configuración Firebase iOS
+android/app/google-services.json # Configuración Firebase Android
+
+# ============================================================================
+# 🔧 DJANGO BACKEND - ARCHIVOS A IGNORAR
+# ============================================================================
+
+# PYTHON:
+__pycache__/              # Cache de Python
+*.pyc, *.pyo              # Archivos compilados Python
+venv/, .venv/             # Entornos virtuales
+
+# DJANGO:
+db.sqlite3                # Base de datos local
+/media/                   # Archivos subidos por usuarios
+/static/                  # Archivos estáticos recolectados
+*.log                     # Logs de Django
+
+# CELERY Y REDIS:
+celerybeat-schedule       # Programación de Celery
+dump.rdb                  # Dump de Redis
+
+# MONITOREO:
+monitoring_reports/       # Reportes generados
+*_report.json            # Archivos de reporte
+monitoring_*.log         # Logs del sistema de monitoreo
+
+# ============================================================================
+# 💻 ARCHIVOS DE DESARROLLO
+# ============================================================================
+
+# EDITORES:
+.vscode/                  # Visual Studio Code
+.idea/                    # IntelliJ/PyCharm
+*.swp, *.swo             # Vim
+
+# SISTEMA OPERATIVO:
+.DS_Store                 # macOS
+Thumbs.db                 # Windows
+Desktop.ini               # Windows
+
+# TEMPORALES:
+*.tmp, *.temp            # Archivos temporales
+.cache/                  # Directorios de cache
+
+# ============================================================================
+# 🧪 TESTING Y ANÁLISIS
+# ============================================================================
+
+# COVERAGE:
+.coverage                 # Coverage de Python
+htmlcov/                  # Reportes HTML coverage
+coverage/                 # Coverage de Jest (React Native)
+
+# TESTING:
+.pytest_cache/            # Cache de pytest
+.jest/                    # Cache de Jest
+
+# ============================================================================
+# 📊 ARCHIVOS DE REPORTE Y LOGS
+# ============================================================================
+
+# El sistema de monitoreo genera varios tipos de archivos que no deben versionarse:
+
+# REPORTES AUTOMÁTICOS:
+system_report_*.json      # Reportes del sistema
+api_tests_*.csv           # Resultados de tests API
+health_check_*.log        # Logs de health checks
+feature_sync_*.json       # Reportes de sincronización
+
+# LOGS DE APLICACIÓN:
+django.log                # Log principal Django
+celery.log                # Logs de Celery
+monitoring.log            # Logs del sistema de monitoreo
+
+# EXPORTACIONES:
+user_exports/             # Exportaciones generadas por usuarios
+custom_reports/           # Reportes personalizados
+
+# ============================================================================
+# 🔧 CONFIGURACIONES LOCALES PERMITIDAS
+# ============================================================================
+
+# Algunos archivos que SÍ pueden/deben versionarse:
+
+# CONFIGURACIÓN BASE:
+# .env.example             # Plantilla de variables de entorno
+# requirements.txt         # Dependencias Python
+# package.json            # Dependencias Node.js
+
+# CONFIGURACIÓN DE DESARROLLO:
+# docker-compose.yml      # Configuración Docker base
+# Dockerfile              # Imagen Docker
+# setup.sh, setup.bat     # Scripts de instalación
+
+# ============================================================================
+# 🚨 CASOS ESPECIALES Y EXCEPCIONES
+# ============================================================================
+
+# KEYSTORES DE DEBUG:
+# !android/app/debug.keystore  # Keystore de debug SÍ se versiona
+
+# ARCHIVOS DE MIGRACIÓN:
+# Las migraciones de Django normalmente SÍ se versionan
+# Si necesitas ignorarlas temporalmente, descomenta:
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# ARCHIVOS DE CONFIGURACIÓN PLANTILLA:
+# !.env.example            # Plantillas sí se versionan
+# !docker-compose.example.yml
+
+# ============================================================================
+# 📝 INSTRUCCIONES PARA DESARROLLADORES
+# ============================================================================
+
+# 1. ANTES DE COMMIT:
+#    - Verifica que no hay archivos sensibles: git status
+#    - Revisa archivos nuevos: git diff --cached
+#    - Usa: git add . solo si estás seguro
+
+# 2. SI ACCIDENTALMENTE COMMITEASTE UN ARCHIVO SENSIBLE:
+#    - Para archivos no pusheados: git reset HEAD~1
+#    - Para archivos ya pusheados: contacta al lead del equipo
+
+# 3. CONFIGURACIÓN LOCAL:
+#    - Crea tu .env basándote en .env.example
+#    - Nunca hagas commit de archivos con tus credenciales personales
+#    - Usa configuraciones locales que sean ignoradas
+
+# 4. TESTING:
+#    - Los reportes de test no deben versionarse
+#    - Solo versiona configuraciones de testing
+#    - Ejecuta tests antes de commits importantes
+
+# ============================================================================
+# 📞 CONTACTO PARA DUDAS
+# ============================================================================
+
+# Si tienes dudas sobre qué archivos ignorar o versionar:
+# - Consulta este documento
+# - Pregunta al equipo en el canal #development
+# - Revisa los .gitignore existentes como referencia
+
+# ============================================================================
+# END OF TEMPLATE
+# ============================================================================
