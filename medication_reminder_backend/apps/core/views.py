@@ -11,6 +11,27 @@ import json
 
 @csrf_exempt
 @require_http_methods(["GET"])
+def home(request):
+    """
+    API Home page - Welcome message
+    """
+    return JsonResponse({
+        'message': '🏥 Medication Reminder API',
+        'version': '1.0.0',
+        'status': 'operational',
+        'endpoints': {
+            'authentication': '/api/auth/',
+            'users': '/api/users/',
+            'health': '/health/',
+            'api_docs': '/api/docs/',
+            'api_schema': '/api/schema/'
+        },
+        'documentation': '/api/docs/'
+    })
+
+
+@csrf_exempt
+@require_http_methods(["GET"])
 def health_check(request):
     """
     Simple health check endpoint
