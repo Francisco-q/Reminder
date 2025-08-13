@@ -46,9 +46,9 @@ LOCAL_APPS = [
     'apps.core',           # Shared utilities and base classes
     'apps.users',          # User management
     'apps.authentication', # Auth & JWT tokens
-    # 'apps.medications',    # Medication CRUD & management - commented (uses ArrayField)
-    # 'apps.schedules',      # Daily schedules & timing - commented (views don't exist)
-    # 'apps.notifications',  # Push notifications & alerts (comentado temporalmente)
+    'apps.medications',    # Medication CRUD & management - **RE-HABILITADO con views creadas**
+    'apps.schedules',      # Daily schedules & timing - **RE-HABILITADO con views creadas**
+    'apps.notifications',  # Push notifications & alerts - **CREADO y habilitado**
     # 'apps.analytics',      # Progress tracking & statistics (comentado temporalmente)
     'apps.monitoring',     # System monitoring & frontend-backend sync - **RE-HABILITADO con SQLite**
 ]
