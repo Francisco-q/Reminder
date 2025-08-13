@@ -1,5 +1,5 @@
-import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import type { AuthTokens } from '../types';
 
@@ -9,7 +9,7 @@ class ApiService {
 
   constructor() {
     this.baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
-    
+
     this.instance = axios.create({
       baseURL: this.baseURL,
       timeout: 10000,
@@ -48,7 +48,7 @@ class ApiService {
             if (tokens?.refresh) {
               const newTokens = await this.refreshToken(tokens.refresh);
               this.setStoredTokens(newTokens);
-              
+
               // Retry la petición original con el nuevo token
               originalRequest.headers.Authorization = `Bearer ${newTokens.access}`;
               return this.instance(originalRequest);
