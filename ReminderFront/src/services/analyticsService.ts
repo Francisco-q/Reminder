@@ -1,8 +1,8 @@
-import type { 
-  AdherenceStats, 
-  ProgressStats, 
-  SystemHealth, 
-  FeatureSyncStatus 
+import type {
+  AdherenceStats,
+  FeatureSyncStatus,
+  ProgressStats,
+  SystemHealth
 } from '../types';
 import { apiService } from './apiService';
 
@@ -117,30 +117,30 @@ export class AnalyticsService {
     // Implementar lógica para calcular racha actual
     let streak = 0;
     const today = new Date();
-    
+
     for (let i = 0; i < 30; i++) {
       const checkDate = new Date(today);
       checkDate.setDate(today.getDate() - i);
-      
+
       const daySchedules = schedules.filter(s => {
         const scheduleDate = new Date(s.date);
         return scheduleDate.toDateString() === checkDate.toDateString();
       });
-      
+
       if (daySchedules.length === 0) continue;
-      
+
       const dayAdherence = this.calculateAdherence(
-        daySchedules.length, 
+        daySchedules.length,
         daySchedules.filter(s => s.taken).length
       );
-      
+
       if (dayAdherence >= 80) { // 80% como umbral para "buen día"
         streak++;
       } else {
         break;
       }
     }
-    
+
     return streak;
   }
 

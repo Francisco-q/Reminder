@@ -1,8 +1,8 @@
-import type { 
-  Medication, 
-  MedicationFormData, 
+import type {
+  Medication,
+  MedicationFormData,
   MedicationHistory,
-  PaginatedResponse 
+  PaginatedResponse
 } from '../types';
 import { apiService } from './apiService';
 

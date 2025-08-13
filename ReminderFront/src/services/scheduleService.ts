@@ -1,7 +1,7 @@
-import type { 
-  DailySchedule, 
+import type {
+  DailySchedule,
   MedicationDose,
-  PaginatedResponse 
+  PaginatedResponse
 } from '../types';
 import { apiService } from './apiService';
 
@@ -118,8 +118,8 @@ export class ScheduleService {
 
   getOverdueSchedules(schedules: DailySchedule[]): DailySchedule[] {
     const now = new Date();
-    return schedules.filter(schedule => 
-      !schedule.taken && 
+    return schedules.filter(schedule =>
+      !schedule.taken &&
       new Date(schedule.scheduled_time) < now
     );
   }
@@ -145,9 +145,9 @@ export class ScheduleService {
   // Formatear tiempo para mostrar
   formatTimeForDisplay(timeString: string): string {
     const date = new Date(timeString);
-    return date.toLocaleTimeString('es-ES', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
+    return date.toLocaleTimeString('es-ES', {
+      hour: '2-digit',
+      minute: '2-digit'
     });
   }
 

@@ -1,8 +1,8 @@
-import type { 
-  UserNotification, 
-  NotificationTemplate, 
+import type {
   NotificationPreferences,
-  PaginatedResponse 
+  NotificationTemplate,
+  PaginatedResponse,
+  UserNotification
 } from '../types';
 import { apiService } from './apiService';
 
