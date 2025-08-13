@@ -1,18 +1,18 @@
+import {
+  BarChart3,
+  Bell,
+  Calendar,
+  Home,
+  LogOut,
+  Menu,
+  Monitor,
+  Pill,
+  User,
+  X,
+} from 'lucide-react';
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks';
-import {
-  Home,
-  Pill,
-  Calendar,
-  Bell,
-  BarChart3,
-  User,
-  Monitor,
-  Menu,
-  X,
-  LogOut,
-} from 'lucide-react';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: Home },
@@ -70,10 +70,9 @@ const Sidebar: React.FC = () => {
                           <NavLink
                             to={item.href}
                             className={({ isActive }) =>
-                              `group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold ${
-                                isActive
-                                  ? 'bg-primary-50 text-primary-700'
-                                  : 'text-gray-700 hover:text-primary-700 hover:bg-gray-50'
+                              `group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold ${isActive
+                                ? 'bg-primary-50 text-primary-700'
+                                : 'text-gray-700 hover:text-primary-700 hover:bg-gray-50'
                               }`
                             }
                             onClick={() => setSidebarOpen(false)}
@@ -130,10 +129,9 @@ const Sidebar: React.FC = () => {
                       <NavLink
                         to={item.href}
                         className={({ isActive }) =>
-                          `group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold ${
-                            isActive
-                              ? 'bg-primary-50 text-primary-700'
-                              : 'text-gray-700 hover:text-primary-700 hover:bg-gray-50'
+                          `group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold ${isActive
+                            ? 'bg-primary-50 text-primary-700'
+                            : 'text-gray-700 hover:text-primary-700 hover:bg-gray-50'
                           }`
                         }
                       >

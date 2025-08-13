@@ -20,7 +20,7 @@ const PublicLayout: React.FC<PublicLayoutProps> = ({ children }) => {
             </div>
           </div>
         </div>
-        
+
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow-xl rounded-lg sm:px-10">
             {children}
