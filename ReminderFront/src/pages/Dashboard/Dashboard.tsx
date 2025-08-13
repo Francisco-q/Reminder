@@ -1,8 +1,8 @@
-import React from 'react';
-import { useTodaySchedules, useMedications, useNotifications } from '../../hooks';
-import { Pill, Clock, Bell, TrendingUp, AlertTriangle } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { AlertTriangle, Bell, Clock, Pill } from 'lucide-react';
+import React from 'react';
+import { useMedications, useNotifications, useTodaySchedules } from '../../hooks';
 
 const Dashboard: React.FC = () => {
   const { schedules: todaySchedules, loading: schedulesLoading } = useTodaySchedules();
@@ -159,11 +159,10 @@ const Dashboard: React.FC = () => {
                       </div>
                     </div>
                     <span
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        new Date(`${schedule.date}T${schedule.scheduled_time}`) > new Date()
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${new Date(`${schedule.date}T${schedule.scheduled_time}`) > new Date()
                           ? 'bg-yellow-100 text-yellow-800'
                           : 'bg-red-100 text-red-800'
-                      }`}
+                        }`}
                     >
                       {new Date(`${schedule.date}T${schedule.scheduled_time}`) > new Date()
                         ? 'Pendiente'
@@ -196,11 +195,10 @@ const Dashboard: React.FC = () => {
                 {recentNotifications.map((notification) => (
                   <div
                     key={notification.id}
-                    className={`p-3 rounded-md border ${
-                      notification.is_read
+                    className={`p-3 rounded-md border ${notification.is_read
                         ? 'bg-gray-50 border-gray-200'
                         : 'bg-blue-50 border-blue-200'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">

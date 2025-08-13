@@ -1,8 +1,8 @@
+import { AlertTriangle, Edit, Pill, Plus, Search, Trash2 } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMedications } from '../../hooks';
-import { Plus, Search, Pill, Edit, Trash2, AlertTriangle } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { useMedications } from '../../hooks';
 import { medicationService } from '../../services';
 
 const Medications: React.FC = () => {
@@ -12,8 +12,8 @@ const Medications: React.FC = () => {
 
   const filteredMedications = medications?.filter(medication => {
     const matchesSearch = medication.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         medication.active_ingredient?.toLowerCase().includes(searchTerm.toLowerCase());
-    
+      medication.active_ingredient?.toLowerCase().includes(searchTerm.toLowerCase());
+
     const matchesFilter = (() => {
       switch (filter) {
         case 'active':
@@ -127,7 +127,7 @@ const Medications: React.FC = () => {
         <div className="bg-white rounded-lg shadow p-12 text-center">
           <Pill className="mx-auto h-12 w-12 text-gray-400" />
           <h3 className="mt-4 text-lg font-medium text-gray-900">
-            {searchTerm || filter !== 'all' 
+            {searchTerm || filter !== 'all'
               ? 'No se encontraron medicamentos'
               : 'No tienes medicamentos registrados'
             }
@@ -159,12 +159,10 @@ const Medications: React.FC = () => {
                 <div className="flex items-start justify-between">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                        medication.is_active ? 'bg-green-100' : 'bg-gray-100'
-                      }`}>
-                        <Pill className={`w-6 h-6 ${
-                          medication.is_active ? 'text-green-600' : 'text-gray-400'
-                        }`} />
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${medication.is_active ? 'bg-green-100' : 'bg-gray-100'
+                        }`}>
+                        <Pill className={`w-6 h-6 ${medication.is_active ? 'text-green-600' : 'text-gray-400'
+                          }`} />
                       </div>
                     </div>
                     <div className="flex-1">
@@ -184,23 +182,23 @@ const Medications: React.FC = () => {
                           </span>
                         )}
                       </div>
-                      
+
                       {medication.active_ingredient && (
                         <p className="text-sm text-gray-600 mb-1">
                           <span className="font-medium">Principio activo:</span> {medication.active_ingredient}
                         </p>
                       )}
-                      
+
                       <p className="text-sm text-gray-600 mb-1">
                         <span className="font-medium">Presentación:</span> {medication.presentation} - {medication.concentration}
                       </p>
-                      
+
                       {medication.current_stock !== null && (
                         <p className="text-sm text-gray-600 mb-1">
                           <span className="font-medium">Stock actual:</span> {medication.current_stock} {medication.unit}
                         </p>
                       )}
-                      
+
                       {medication.notes && (
                         <p className="text-sm text-gray-500 mt-2">
                           {medication.notes}
@@ -208,15 +206,14 @@ const Medications: React.FC = () => {
                       )}
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => handleToggleActive(medication.id, medication.is_active)}
-                      className={`px-3 py-1 rounded-md text-xs font-medium ${
-                        medication.is_active
+                      className={`px-3 py-1 rounded-md text-xs font-medium ${medication.is_active
                           ? 'bg-red-100 text-red-700 hover:bg-red-200'
                           : 'bg-green-100 text-green-700 hover:bg-green-200'
-                      }`}
+                        }`}
                     >
                       {medication.is_active ? 'Desactivar' : 'Activar'}
                     </button>
