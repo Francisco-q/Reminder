@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import type { UserNotification } from '../types';
-import { notificationService } from '../services';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { notificationService } from '../services';
+import type { UserNotification } from '../types';
 
 export const useNotifications = () => {
   const [notifications, setNotifications] = useState<UserNotification[]>([]);
@@ -32,8 +32,8 @@ export const useNotifications = () => {
   const markAsRead = async (notificationId: string) => {
     try {
       const updatedNotification = await notificationService.markAsRead(notificationId);
-      setNotifications(prev => 
-        prev.map(notif => 
+      setNotifications(prev =>
+        prev.map(notif =>
           notif.id === notificationId ? updatedNotification : notif
         )
       );
@@ -49,7 +49,7 @@ export const useNotifications = () => {
   const markAllAsRead = async () => {
     try {
       await notificationService.markAllAsRead();
-      setNotifications(prev => 
+      setNotifications(prev =>
         prev.map(notif => ({ ...notif, is_read: true }))
       );
       setUnreadCount(0);
@@ -63,7 +63,7 @@ export const useNotifications = () => {
   const deleteNotification = async (notificationId: string) => {
     try {
       await notificationService.deleteNotification(notificationId);
-      setNotifications(prev => 
+      setNotifications(prev =>
         prev.filter(notif => notif.id !== notificationId)
       );
       // Si la notificación no estaba leída, reducir el contador
@@ -145,7 +145,7 @@ export const useUnreadNotifications = () => {
 export const useNotificationPermissions = () => {
   const [permission, setPermission] = useState<NotificationPermission>('default');
   const [loading, setLoading] = useState(false);
-  
+
   const requestPermission = async () => {
     try {
       setLoading(true);

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import type { Medication } from '../types';
-import { medicationService } from '../services';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { medicationService } from '../services';
+import type { Medication } from '../types';
 
 export const useMedications = () => {
   const [medications, setMedications] = useState<Medication[]>([]);
@@ -11,7 +11,7 @@ export const useMedications = () => {
 
   const fetchMedications = async () => {
     if (!isAuthenticated) return;
-    
+
     try {
       setLoading(true);
       setError(null);
@@ -39,7 +39,7 @@ export const useMedications = () => {
   const updateMedication = async (id: string, medicationData: any) => {
     try {
       const updatedMedication = await medicationService.updateMedication(id, medicationData);
-      setMedications(prev => 
+      setMedications(prev =>
         prev.map(med => med.id === id ? updatedMedication : med)
       );
       return updatedMedication;
@@ -64,7 +64,7 @@ export const useMedications = () => {
   const updateStock = async (id: string, newStock: number, notes?: string) => {
     try {
       const updatedMedication = await medicationService.updateStock(id, newStock, notes);
-      setMedications(prev => 
+      setMedications(prev =>
         prev.map(med => med.id === id ? updatedMedication : med)
       );
       return updatedMedication;

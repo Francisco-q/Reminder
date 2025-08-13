@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import type { DailySchedule } from '../types';
-import { scheduleService } from '../services';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { scheduleService } from '../services';
+import type { DailySchedule } from '../types';
 
 export const useTodaySchedules = () => {
   const [schedules, setSchedules] = useState<DailySchedule[]>([]);
@@ -27,8 +27,8 @@ export const useTodaySchedules = () => {
   const markAsTaken = async (scheduleId: string, notes?: string) => {
     try {
       const updatedSchedule = await scheduleService.markAsTaken(scheduleId, notes);
-      setSchedules(prev => 
-        prev.map(schedule => 
+      setSchedules(prev =>
+        prev.map(schedule =>
           schedule.id === scheduleId ? updatedSchedule : schedule
         )
       );
@@ -43,8 +43,8 @@ export const useTodaySchedules = () => {
   const markAsSkipped = async (scheduleId: string, reason?: string) => {
     try {
       const updatedSchedule = await scheduleService.markAsSkipped(scheduleId, reason);
-      setSchedules(prev => 
-        prev.map(schedule => 
+      setSchedules(prev =>
+        prev.map(schedule =>
           schedule.id === scheduleId ? updatedSchedule : schedule
         )
       );
