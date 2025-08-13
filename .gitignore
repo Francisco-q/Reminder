@@ -28,6 +28,11 @@
 # Internal documentation and analysis
 SYSTEM_STATE_ANALYSIS.md
 DEVELOPMENT_RULES.md
+USER_MANUAL.md
+setup.bat
+setup.sh
+start.bat
+start.sh
 
 # Database files
 *.sqlite3
