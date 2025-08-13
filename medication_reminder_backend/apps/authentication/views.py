@@ -10,6 +10,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
+from django.conf import settings
 from apps.users.models import User
 from apps.users.serializers import UserRegistrationSerializer
 from .serializers import (
@@ -201,3 +202,90 @@ def verify_token_view(request):
             'last_active': user.last_active,
         }
     }, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def google_oauth_login(request):
+    """
+    Endpoint para login con Google OAuth
+    Recibe el token de Google y autentica al usuario
+    """
+    from google.oauth2 import id_token
+    from google.auth.transport import requests
+    
+    token = request.data.get('credential')
+    
+    if not token:
+        return Response(
+            {'error': 'Token de Google requerido'}, 
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    
+    try:
+        # Verificar token de Google
+        idinfo = id_token.verify_oauth2_token(
+            token, 
+            requests.Request(), 
+            settings.GOOGLE_OAUTH_CLIENT_ID
+        )
+        
+        # Validar issuer
+        if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
+            return Response(
+                {'error': 'Token inválido'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Extraer información del usuario
+        google_id = idinfo['sub']
+        email = idinfo['email']
+        first_name = idinfo.get('given_name', '')
+        last_name = idinfo.get('family_name', '')
+        picture = idinfo.get('picture', '')
+        
+        # Crear o obtener usuario
+        user, created = User.objects.get_or_create(
+            email=email,
+            defaults={
+                'username': email,
+                'first_name': first_name,
+                'last_name': last_name,
+                'is_active': True,
+            }
+        )
+        
+        # Si es nuevo usuario, actualizar información
+        if created:
+            user.set_unusable_password()  # No password para OAuth users
+            user.save()
+        
+        # Generar JWT tokens
+        refresh = RefreshToken.for_user(user)
+        
+        return Response({
+            'message': 'Login exitoso' if not created else 'Usuario creado exitosamente',
+            'tokens': {
+                'access': str(refresh.access_token),
+                'refresh': str(refresh),
+            },
+            'user': {
+                'id': str(user.id),
+                'username': user.username,
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'is_new': created,
+            }
+        }, status=status.HTTP_200_OK)
+        
+    except ValueError as e:
+        return Response(
+            {'error': f'Token inválido: {str(e)}'}, 
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    except Exception as e:
+        return Response(
+            {'error': f'Error del servidor: {str(e)}'}, 
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )

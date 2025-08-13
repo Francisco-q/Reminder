@@ -5,7 +5,8 @@ from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 from .views import (
     CustomTokenObtainPairView, login_view, register_view, logout_view,
-    password_reset_request_view, password_reset_confirm_view, verify_token_view
+    password_reset_request_view, password_reset_confirm_view, verify_token_view,
+    google_oauth_login
 )
 
 app_name = 'authentication'
@@ -19,6 +20,7 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('register/', register_view, name='register'),
     path('logout/', logout_view, name='logout'),
+    path('google-oauth/', google_oauth_login, name='google_oauth_login'),
     
     # Password reset
     path('password-reset/', password_reset_request_view, name='password_reset_request'),
