@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { toast } from 'react-toastify';
 import { Eye, EyeOff, Loader } from 'lucide-react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import * as yup from 'yup';
 
-import { useAuth } from '../../hooks';
 import GoogleAuthButton from '../../components/Auth/GoogleAuthButton';
+import { useAuth } from '../../hooks';
 
 const schema = yup.object({
   username: yup.string().required('El usuario es requerido'),
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
       <h2 className="text-center text-3xl font-extrabold text-gray-900 mb-6">
         Iniciar Sesión
       </h2>
-      
+
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="username" className="sr-only">
@@ -58,9 +58,8 @@ const Login: React.FC = () => {
             {...register('username')}
             type="text"
             autoComplete="username"
-            className={`appearance-none rounded-md relative block w-full px-3 py-2 border ${
-              errors.username ? 'border-red-300' : 'border-gray-300'
-            } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm`}
+            className={`appearance-none rounded-md relative block w-full px-3 py-2 border ${errors.username ? 'border-red-300' : 'border-gray-300'
+              } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm`}
             placeholder="Usuario"
           />
           {errors.username && (
@@ -77,9 +76,8 @@ const Login: React.FC = () => {
               {...register('password')}
               type={showPassword ? 'text' : 'password'}
               autoComplete="current-password"
-              className={`appearance-none rounded-md relative block w-full px-3 py-2 pr-10 border ${
-                errors.password ? 'border-red-300' : 'border-gray-300'
-              } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm`}
+              className={`appearance-none rounded-md relative block w-full px-3 py-2 pr-10 border ${errors.password ? 'border-red-300' : 'border-gray-300'
+                } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm`}
               placeholder="Contraseña"
             />
             <button

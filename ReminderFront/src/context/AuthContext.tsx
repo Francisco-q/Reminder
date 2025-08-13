@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import type { ReactNode } from 'react';
-import type { User, AuthTokens } from '../types';
+import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { authService } from '../services';
+import type { AuthTokens, User } from '../types';
 
 // Tipos del contexto
 interface AuthState {
@@ -56,7 +56,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
         loading: true,
         error: null,
       };
-    
+
     case 'AUTH_SUCCESS':
       return {
         ...state,
@@ -66,7 +66,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
         loading: false,
         error: null,
       };
-    
+
     case 'AUTH_FAILURE':
       return {
         ...state,
@@ -76,7 +76,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
         loading: false,
         error: action.payload,
       };
-    
+
     case 'LOGOUT':
       return {
         ...state,
@@ -86,25 +86,25 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
         loading: false,
         error: null,
       };
-    
+
     case 'UPDATE_USER':
       return {
         ...state,
         user: action.payload,
       };
-    
+
     case 'CLEAR_ERROR':
       return {
         ...state,
         error: null,
       };
-    
+
     case 'SET_LOADING':
       return {
         ...state,
         loading: action.payload,
       };
-    
+
     default:
       return state;
   }
@@ -129,18 +129,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const checkAuthStatus = async () => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
-      
+
       if (authService.isAuthenticated()) {
         const user = await authService.getCurrentUser();
         const tokens = authService.getStoredUser() ? {
           access: '', // Los tokens reales se manejan internamente
           refresh: ''
         } : null;
-        
+
         if (tokens) {
-          dispatch({ 
-            type: 'AUTH_SUCCESS', 
-            payload: { user, tokens } 
+          dispatch({
+            type: 'AUTH_SUCCESS',
+            payload: { user, tokens }
           });
           authService.setStoredUser(user);
         } else {
@@ -158,22 +158,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (username: string, password: string) => {
     try {
       dispatch({ type: 'AUTH_START' });
-      
+
       const response = await authService.login({ username, password });
-      
-      dispatch({ 
-        type: 'AUTH_SUCCESS', 
-        payload: { 
-          user: response.user, 
-          tokens: response.tokens 
+
+      dispatch({
+        type: 'AUTH_SUCCESS',
+        payload: {
+          user: response.user,
+          tokens: response.tokens
         }
       });
-      
+
       authService.setStoredUser(response.user);
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 
-                          error.response?.data?.error || 
-                          'Error al iniciar sesión';
+      const errorMessage = error.response?.data?.message ||
+        error.response?.data?.error ||
+        'Error al iniciar sesión';
       dispatch({ type: 'AUTH_FAILURE', payload: errorMessage });
       throw error;
     }
@@ -189,22 +189,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }) => {
     try {
       dispatch({ type: 'AUTH_START' });
-      
+
       const response = await authService.register(userData);
-      
-      dispatch({ 
-        type: 'AUTH_SUCCESS', 
-        payload: { 
-          user: response.user, 
-          tokens: response.tokens 
+
+      dispatch({
+        type: 'AUTH_SUCCESS',
+        payload: {
+          user: response.user,
+          tokens: response.tokens
         }
       });
-      
+
       authService.setStoredUser(response.user);
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 
-                          error.response?.data?.error || 
-                          'Error al registrar usuario';
+      const errorMessage = error.response?.data?.message ||
+        error.response?.data?.error ||
+        'Error al registrar usuario';
       dispatch({ type: 'AUTH_FAILURE', payload: errorMessage });
       throw error;
     }
@@ -213,22 +213,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const loginWithGoogle = async (googleToken: string) => {
     try {
       dispatch({ type: 'AUTH_START' });
-      
+
       const response = await authService.loginWithGoogle(googleToken);
-      
-      dispatch({ 
-        type: 'AUTH_SUCCESS', 
-        payload: { 
-          user: response.user, 
-          tokens: response.tokens 
+
+      dispatch({
+        type: 'AUTH_SUCCESS',
+        payload: {
+          user: response.user,
+          tokens: response.tokens
         }
       });
-      
+
       authService.setStoredUser(response.user);
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 
-                          error.response?.data?.error || 
-                          'Error al autenticarse con Google';
+      const errorMessage = error.response?.data?.message ||
+        error.response?.data?.error ||
+        'Error al autenticarse con Google';
       dispatch({ type: 'AUTH_FAILURE', payload: errorMessage });
       throw error;
     }
@@ -251,8 +251,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       dispatch({ type: 'UPDATE_USER', payload: updatedUser });
       authService.setStoredUser(updatedUser);
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 
-                          'Error al actualizar usuario';
+      const errorMessage = error.response?.data?.message ||
+        'Error al actualizar usuario';
       dispatch({ type: 'AUTH_FAILURE', payload: errorMessage });
       throw error;
     }
