@@ -1,4 +1,13 @@
 #!/usr/bin/env python
+"""
+Medication Reminder - Backend Application
+Copyright (C) 2025 Francisco [Tu Apellido/Empresa]. All Rights Reserved.
+
+This software is proprietary and confidential. Unauthorized copying, distribution,
+modification, or use of this software is strictly prohibited without prior written
+permission from the copyright holder.
+"""
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

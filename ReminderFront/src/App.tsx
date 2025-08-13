@@ -1,3 +1,12 @@
+/*
+ * Medication Reminder - Frontend Application
+ * Copyright (C) 2025 Francisco [Tu Apellido/Empresa]. All Rights Reserved.
+ * 
+ * This software is proprietary and confidential. Unauthorized copying, distribution,
+ * modification, or use of this software is strictly prohibited without prior written
+ * permission from the copyright holder.
+ */
+
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import React from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';

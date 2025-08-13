@@ -1,23 +1,35 @@
-# 💊 Medication Reminder - Recordatorio de Medicamentos
+# 💊 Medication Reminder - Professional Medication Management Platform
 
-Una aplicación completa de recordatorio de medicamentos con frontend en **React Native** y backend en **Django**, diseñada para ayudar a los usuarios a mantener un seguimiento preciso de su medicación diaria.
+## 🏢 COMMERCIAL SOFTWARE - ALL RIGHTS RESERVED
 
-## 🎯 Visión General del Proyecto
+**Medication Reminder** is a proprietary, commercial-grade medication management platform designed for healthcare providers, enterprises, and individual users seeking professional-quality medication adherence solutions.
 
-**Medication Reminder** es una solución integral que combina una aplicación móvil intuitiva con un backend robusto y un sistema de monitoreo avanzado para garantizar la adherencia al tratamiento médico.
+> **⚠️ IMPORTANT**: This is proprietary software protected by copyright law. See [LICENSE](./LICENSE) and [COMMERCIAL_LICENSE.md](./COMMERCIAL_LICENSE.md) for usage terms and licensing options.
 
-### 📱 **Frontend - React Native**
-- **Aplicación móvil nativa** para iOS y Android
-- **Interfaz intuitiva** para gestión de medicamentos
-- **Notificaciones push** para recordatorios
-- **Sincronización offline** para uso sin conexión
-- **Estadísticas visuales** del progreso del tratamiento
+## 🎯 Commercial Product Overview
 
-### 🔧 **Backend - Django API**
-- **API REST completa** con Django Rest Framework
-- **Base de datos PostgreSQL** para almacenamiento confiable
-- **Autenticación JWT** segura
-- **Arquitectura de Vertical Slicing** para mantenibilidad
+**Medication Reminder** is a complete healthcare technology solution combining modern web and mobile applications with enterprise-grade backend infrastructure, designed for commercial distribution and professional healthcare environments.
+
+### 🌐 **Web Application - React Frontend**
+- **Professional web interface** with Google OAuth integration
+- **Real-time medication tracking** and adherence monitoring
+- **Advanced analytics dashboard** with visual progress indicators
+- **Multi-user family coordination** features
+- **Healthcare provider integration** ready
+
+### 📱 **Mobile Application - React Native** (In Development)
+- **Cross-platform native apps** for iOS and Android
+- **Push notifications** with smart scheduling
+- **Offline synchronization** for uninterrupted use
+- **Biometric authentication** for secure access
+- **Voice reminders** and accessibility features
+
+### 🔧 **Enterprise Backend - Django API**
+- **Scalable REST API** with Django Rest Framework
+- **Google OAuth integration** for seamless authentication
+- **PostgreSQL/SQLite database** support
+- **JWT security** with refresh token management
+- **Advanced monitoring system** with health checks
 - **Tareas asíncronas** con Celery y Redis
 
 ### 🔍 **Sistema de Monitoreo** ⭐ **NUEVO**
@@ -335,13 +347,42 @@ El sistema incluye un **dashboard de monitoreo completo** que proporciona:
 2. Crear rama de feature (`git checkout -b feature/nueva-caracteristica`)
 3. Commit cambios (`git commit -m 'Agregar nueva característica'`)
 4. Push a la rama (`git push origin feature/nueva-caracteristica`)
-5. Abrir Pull Request
+## 🏢 Commercial Licensing and Sales
 
-## 📄 Licencia
+### 💰 **Business Model**
+This is a **commercial software product** designed for sale and licensing:
 
-Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
+- **Individual Licenses** - Personal medication management
+- **Professional Licenses** - Advanced features and analytics  
+- **Enterprise Licenses** - Custom deployments for healthcare organizations
+- **White-label Solutions** - Branded versions for partners
 
-## 🎯 Roadmap
+### 🎯 **Target Markets**
+- Healthcare providers (hospitals, clinics, pharmacies)
+- Individual consumers with chronic conditions
+- Elderly care and assisted living facilities
+- Insurance companies and wellness programs
+- Technology partners and resellers
+
+### 📞 **Commercial Inquiries**
+For licensing, partnerships, or enterprise sales:
+- **Business**: [business@medicationreminder.com]
+- **Enterprise**: [enterprise@medicationreminder.com]
+- **Partnerships**: [partnerships@medicationreminder.com]
+
+See [COMMERCIAL_LICENSE.md](./COMMERCIAL_LICENSE.md) for detailed commercial licensing information.
+
+## 📄 License and Copyright
+
+**ALL RIGHTS RESERVED** - This is proprietary commercial software.
+
+Copyright (C) 2025 Francisco [Tu Apellido/Empresa]. All rights reserved.
+
+This software and associated documentation are proprietary and confidential. 
+Unauthorized copying, distribution, or use is strictly prohibited. 
+See [LICENSE](./LICENSE) for complete terms.
+
+## 🎯 Development Roadmap
 
 ### 🔄 En Desarrollo
 - [ ] Integración completa frontend-backend
