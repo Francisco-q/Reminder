@@ -25,6 +25,10 @@
 **/*password*
 **/*credential*
 
+# Internal documentation and analysis
+SYSTEM_STATE_ANALYSIS.md
+DEVELOPMENT_RULES.md
+
 # Database files
 *.sqlite3
 *.sqlite
