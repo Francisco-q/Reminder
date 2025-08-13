@@ -4,7 +4,16 @@
 # ============================================================================
 
 # ============================================================================
-# 🔐 SENSITIVE & PRIVATE FILES (CRITICAL - NEVER COMMIT)
+# � OLD FOLDER NAMES (PREVENT ACCIDENTAL COMMITS)
+# ============================================================================
+
+# Ignore old folder names in case they are recreated
+ReminderFront/
+MedicationReminderRN/
+medication_reminder_backend/
+
+# ============================================================================
+# �🔐 SENSITIVE & PRIVATE FILES (CRITICAL - NEVER COMMIT)
 # ============================================================================
 
 # Environment variables and secrets
@@ -121,7 +130,7 @@ env/
 .venv/
 .ENV/
 .env/
-medication_reminder_env/
+back_reminder_env/
 
 # IDE and editors
 .vscode/
@@ -133,53 +142,53 @@ medication_reminder_env/
 .pydevproject
 
 # ============================================================================
-# 📱 REACT NATIVE FRONTEND
+# 📱 REACT NATIVE FRONTEND (mobileReminder)  
 # ============================================================================
 
-# Dependencies
-MedicationReminderRN/node_modules/
-MedicationReminderRN/npm-debug.log*
-MedicationReminderRN/yarn-debug.log*
-MedicationReminderRN/yarn-error.log*
-MedicationReminderRN/package-lock.json
-MedicationReminderRN/yarn.lock
-
-# React Native
-MedicationReminderRN/android/app/build/
-MedicationReminderRN/android/build/
-MedicationReminderRN/android/.gradle/
-MedicationReminderRN/android/app/.gradle/
-MedicationReminderRN/android/gradle-*/
-MedicationReminderRN/android/*.zip
-MedicationReminderRN/android/app/debug.keystore
-MedicationReminderRN/android/local.properties
-
-# iOS Build
-MedicationReminderRN/ios/build/
-MedicationReminderRN/ios/Pods/
-MedicationReminderRN/ios/.xcode.env.local
-
-# Metro
-MedicationReminderRN/.metro-health-check*
-MedicationReminderRN/metro-cache/
-
-# Flipper
-MedicationReminderRN/ios/Podfile.lock
-
-# Temporary configuration files
-MedicationReminderRN/android/app/build.gradle.old
-MedicationReminderRN/android/app/build.gradle.new
-MedicationReminderRN/android/settings.gradle.old
-MedicationReminderRN/android/settings.gradle.new
-
-# Expo (if using Expo)
-MedicationReminderRN/.expo/
-MedicationReminderRN/dist/
-MedicationReminderRN/web-build/
+# Node modules
+mobileReminder/node_modules/
 
 # React Native specific
-MedicationReminderRN/android/app/src/main/assets/index.android.bundle*
-MedicationReminderRN/ios/main.jsbundle*
+mobileReminder/.bundle/
+mobileReminder/metro-cache/
+mobileReminder/tmp/
+
+# Android Build  
+mobileReminder/android/build/
+mobileReminder/android/app/build/
+mobileReminder/android/.gradle/
+mobileReminder/android/app/.gradle/
+mobileReminder/android/gradle-*/
+mobileReminder/android/*.zip
+mobileReminder/android/app/debug.keystore
+mobileReminder/android/local.properties
+
+# iOS Build
+mobileReminder/ios/build/
+mobileReminder/ios/Pods/
+mobileReminder/ios/.xcode.env.local
+
+# Metro
+mobileReminder/.metro-health-check*
+mobileReminder/metro-cache/
+
+# Flipper
+mobileReminder/ios/Podfile.lock
+
+# Temporary configuration files
+mobileReminder/android/app/build.gradle.old
+mobileReminder/android/app/build.gradle.new
+mobileReminder/android/settings.gradle.old
+mobileReminder/android/settings.gradle.new
+
+# Expo (if using Expo)
+mobileReminder/.expo/
+mobileReminder/dist/
+mobileReminder/web-build/
+
+# React Native specific
+mobileReminder/android/app/src/main/assets/index.android.bundle*
+mobileReminder/ios/main.jsbundle*
 
 # ============================================================================
 # 🔍 MONITORING SYSTEM

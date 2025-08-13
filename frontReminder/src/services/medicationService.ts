@@ -79,6 +79,10 @@ export class MedicationService {
       errors.push('El nombre del medicamento es requerido');
     }
 
+    if (!data.unit?.trim()) {
+      errors.push('La unidad es requerida');
+    }
+
     if (!data.dosage?.trim()) {
       errors.push('La dosis es requerida');
     }
@@ -95,7 +99,7 @@ export class MedicationService {
       errors.push('El color es requerido');
     }
 
-    if (data.current_stock < 0) {
+    if (data.current_stock !== null && data.current_stock < 0) {
       errors.push('El stock no puede ser negativo');
     }
 
@@ -118,6 +122,7 @@ export class MedicationService {
     return {
       name: medication.name,
       dosage: medication.dosage,
+      unit: medication.unit,
       frequency: medication.frequency,
       times: medication.times,
       notes: medication.notes || '',

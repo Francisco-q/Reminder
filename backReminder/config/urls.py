@@ -23,8 +23,8 @@ urlpatterns = [
     path('api/auth/', include('apps.authentication.urls')),
     
     # Vertical Slices - Organized by domain features
-    path('api/medications/', include('apps.medications.urls')),      # **RE-HABILITADO**
-    path('api/schedules/', include('apps.schedules.urls')),          # **RE-HABILITADO**
+    # path('api/medications/', include('apps.medications.urls')),      # **COMENTADO temporalmente (ArrayField/PostgreSQL)**
+    # path('api/schedules/', include('apps.schedules.urls')),          # **COMENTADO temporalmente (depende de medications)**
     path('api/notifications/', include('apps.notifications.urls')), # **NUEVO - HABILITADO**
     # path('api/analytics/', include('apps.analytics.urls')),        # Commented - app doesn't exist
     path('api/users/', include('apps.users.urls')),

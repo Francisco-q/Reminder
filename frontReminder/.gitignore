@@ -35,7 +35,7 @@ SYSTEM_STATE_ANALYSIS.md
 GOOGLE_OAUTH_SETUP.md
 
 # Backend files (should be in backend repo)
-../medication_reminder_backend/
+../backReminder/
 
 # Temporary files
 *.tmp

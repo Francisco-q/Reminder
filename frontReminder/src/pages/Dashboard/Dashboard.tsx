@@ -13,12 +13,12 @@ const Dashboard: React.FC = () => {
   const totalMedications = medications?.length || 0;
   const activeMedications = medications?.filter(med => med.is_active)?.length || 0;
   const todayTotal = todaySchedules?.length || 0;
-  const todayCompleted = todaySchedules?.filter(schedule => schedule.is_taken)?.length || 0;
+  const todayCompleted = todaySchedules?.filter(schedule => schedule.taken)?.length || 0;
   const todayPending = todayTotal - todayCompleted;
   const unreadNotifications = notifications?.filter(notif => !notif.is_read)?.length || 0;
 
   const upcomingSchedules = todaySchedules
-    ?.filter(schedule => !schedule.is_taken)
+    ?.filter(schedule => !schedule.taken)
     ?.sort((a, b) => a.scheduled_time.localeCompare(b.scheduled_time))
     ?.slice(0, 5) || [];
 
@@ -151,10 +151,10 @@ const Dashboard: React.FC = () => {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-gray-900">
-                          {schedule.medication_name}
+                          {schedule.medication.name}
                         </p>
                         <p className="text-sm text-gray-500">
-                          {schedule.dosage} - {schedule.scheduled_time}
+                          {schedule.medication.dosage} - {schedule.scheduled_time}
                         </p>
                       </div>
                     </div>

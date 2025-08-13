@@ -80,18 +80,6 @@ class ApiService {
     localStorage.removeItem('auth_tokens');
   }
 
-  // Verificar si el token está próximo a expirar
-  private isTokenExpiringSoon(token: string): boolean {
-    try {
-      const decoded: any = jwtDecode(token);
-      const currentTime = Date.now() / 1000;
-      // Considerar que expira si quedan menos de 5 minutos
-      return decoded.exp - currentTime < 300;
-    } catch {
-      return true;
-    }
-  }
-
   // Renovar token de acceso
   private async refreshToken(refreshToken: string): Promise<AuthTokens> {
     const response = await axios.post(`${this.baseURL}/auth/token/refresh/`, {
