@@ -34,6 +34,11 @@ setup.sh
 start.bat
 start.sh
 
+# Temporary files
+*.new.*
+*.tmp
+*.bak
+
 # Database files
 *.sqlite3
 *.sqlite
