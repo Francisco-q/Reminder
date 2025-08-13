@@ -17,7 +17,7 @@ export const capitalize = (str: string): string => {
 
 // Capitalizar cada palabra
 export const capitalizeWords = (str: string): string => {
-  return str.replace(/\w\S*/g, (txt) => 
+  return str.replace(/\w\S*/g, (txt) =>
     txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
   );
 };
@@ -39,7 +39,7 @@ export const debounce = <T extends (...args: any[]) => any>(
   wait: number
 ): ((...args: Parameters<T>) => void) => {
   let timeout: NodeJS.Timeout;
-  
+
   return (...args: Parameters<T>) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
@@ -52,7 +52,7 @@ export const throttle = <T extends (...args: any[]) => any>(
   limit: number
 ): ((...args: Parameters<T>) => void) => {
   let inThrottle: boolean;
-  
+
   return (...args: Parameters<T>) => {
     if (!inThrottle) {
       func(...args);
@@ -77,7 +77,7 @@ export const copyToClipboard = async (text: string): Promise<boolean> => {
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
-      
+
       try {
         const result = document.execCommand('copy');
         document.body.removeChild(textArea);
@@ -96,25 +96,25 @@ export const copyToClipboard = async (text: string): Promise<boolean> => {
 export const downloadFile = (data: string | Blob, filename: string, type = 'text/plain'): void => {
   const blob = typeof data === 'string' ? new Blob([data], { type }) : data;
   const url = window.URL.createObjectURL(blob);
-  
+
   const link = document.createElement('a');
   link.href = url;
   link.setAttribute('download', filename);
   document.body.appendChild(link);
   link.click();
   link.remove();
-  
+
   window.URL.revokeObjectURL(url);
 };
 
 // Formatear tamaño de archivo
 export const formatFileSize = (bytes: number): string => {
   if (bytes === 0) return '0 Bytes';
-  
+
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  
+
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 };
 
@@ -151,8 +151,8 @@ export const isMobile = (): boolean => {
 
 // Detectar tema del sistema
 export const getSystemTheme = (): 'light' | 'dark' => {
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches 
-    ? 'dark' 
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
     : 'light';
 };
 
@@ -178,7 +178,7 @@ export const storage = {
       return null;
     }
   },
-  
+
   set: (key: string, value: any): boolean => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
@@ -187,7 +187,7 @@ export const storage = {
       return false;
     }
   },
-  
+
   remove: (key: string): void => {
     try {
       localStorage.removeItem(key);
@@ -195,7 +195,7 @@ export const storage = {
       // Silently fail
     }
   },
-  
+
   clear: (): void => {
     try {
       localStorage.clear();
@@ -215,7 +215,7 @@ export const sessionStorage = {
       return null;
     }
   },
-  
+
   set: (key: string, value: any): boolean => {
     try {
       window.sessionStorage.setItem(key, JSON.stringify(value));
@@ -224,7 +224,7 @@ export const sessionStorage = {
       return false;
     }
   },
-  
+
   remove: (key: string): void => {
     try {
       window.sessionStorage.removeItem(key);
@@ -250,7 +250,7 @@ export const removeDuplicates = <T>(array: T[], key?: keyof T): T[] => {
   if (!key) {
     return [...new Set(array)];
   }
-  
+
   const seen = new Set();
   return array.filter(item => {
     const keyValue = item[key];
@@ -280,7 +280,7 @@ export const sortBy = <T>(array: T[], ...keys: (keyof T)[]): T[] => {
     for (const key of keys) {
       const aVal = a[key];
       const bVal = b[key];
-      
+
       if (aVal < bVal) return -1;
       if (aVal > bVal) return 1;
     }

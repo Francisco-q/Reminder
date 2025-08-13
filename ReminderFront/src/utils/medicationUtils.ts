@@ -16,7 +16,7 @@ export const getRandomMedicationColor = (): string => {
     '#ec4899', // pink
     '#84cc16', // lime
   ];
-  
+
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
@@ -24,11 +24,11 @@ export const getRandomMedicationColor = (): string => {
 export const hexToRgba = (hex: string, alpha: number = 1): string => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (!result) return hex;
-  
+
   const r = parseInt(result[1], 16);
   const g = parseInt(result[2], 16);
   const b = parseInt(result[3], 16);
-  
+
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
@@ -36,11 +36,11 @@ export const hexToRgba = (hex: string, alpha: number = 1): string => {
 export const isColorDark = (hex: string): boolean => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (!result) return false;
-  
+
   const r = parseInt(result[1], 16);
   const g = parseInt(result[2], 16);
   const b = parseInt(result[3], 16);
-  
+
   // Fórmula para calcular luminancia
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
   return luminance < 0.5;
@@ -61,7 +61,7 @@ export const formatFrequency = (frequency: string): string => {
     'as_needed': 'Según sea necesario',
     'custom': 'Personalizado',
   };
-  
+
   return frequencyMap[frequency] || frequency;
 };
 
@@ -75,7 +75,7 @@ export const formatMedicationType = (type: string): string => {
     'cream': 'Crema',
     'other': 'Otro',
   };
-  
+
   return typeMap[type] || type;
 };
 
@@ -89,7 +89,7 @@ export const getMedicationTypeEmoji = (type: string): string => {
     'cream': '🧴',
     'other': '💊',
   };
-  
+
   return emojiMap[type] || '💊';
 };
 
@@ -112,7 +112,7 @@ export const getStockStatus = (current: number, threshold: number): {
       message: 'Sin stock',
     };
   }
-  
+
   if (current <= threshold) {
     return {
       status: 'warning',
@@ -120,7 +120,7 @@ export const getStockStatus = (current: number, threshold: number): {
       message: 'Stock bajo',
     };
   }
-  
+
   return {
     status: 'ok',
     color: 'text-green-600',
@@ -148,7 +148,7 @@ export const generateDefaultTimes = (frequency: string): string[] => {
 export const sortMedications = (medications: any[], sortBy: string, sortOrder: 'asc' | 'desc' = 'asc') => {
   return medications.sort((a, b) => {
     let valueA, valueB;
-    
+
     switch (sortBy) {
       case 'name':
         valueA = a.name.toLowerCase();
@@ -169,7 +169,7 @@ export const sortMedications = (medications: any[], sortBy: string, sortOrder: '
       default:
         return 0;
     }
-    
+
     if (valueA < valueB) return sortOrder === 'asc' ? -1 : 1;
     if (valueA > valueB) return sortOrder === 'asc' ? 1 : -1;
     return 0;
@@ -191,32 +191,32 @@ export const filterMedications = (medications: any[], filters: {
       const matchesName = medication.name.toLowerCase().includes(searchTerm);
       const matchesNotes = medication.notes?.toLowerCase().includes(searchTerm);
       const matchesCondition = medication.condition?.toLowerCase().includes(searchTerm);
-      
+
       if (!matchesName && !matchesNotes && !matchesCondition) {
         return false;
       }
     }
-    
+
     // Filtro por tipo
     if (filters.type && medication.medication_type !== filters.type) {
       return false;
     }
-    
+
     // Filtro por condición
     if (filters.condition && medication.condition !== filters.condition) {
       return false;
     }
-    
+
     // Filtro por estado activo
     if (filters.isActive !== undefined && medication.is_active !== filters.isActive) {
       return false;
     }
-    
+
     // Filtro por stock bajo
     if (filters.lowStock && medication.current_stock > medication.stock_alert_threshold) {
       return false;
     }
-    
+
     return true;
   });
 };
@@ -225,7 +225,7 @@ export const filterMedications = (medications: any[], filters: {
 export const groupMedications = (medications: any[], groupBy: string) => {
   return medications.reduce((groups, medication) => {
     let key;
-    
+
     switch (groupBy) {
       case 'type':
         key = formatMedicationType(medication.medication_type);
@@ -242,11 +242,11 @@ export const groupMedications = (medications: any[], groupBy: string) => {
       default:
         key = 'Otros';
     }
-    
+
     if (!groups[key]) {
       groups[key] = [];
     }
-    
+
     groups[key].push(medication);
     return groups;
   }, {} as Record<string, any[]>);

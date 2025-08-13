@@ -1,21 +1,21 @@
 // Formatear fechas
 export const formatDate = (date: string | Date, options?: Intl.DateTimeFormatOptions): string => {
   const dateObj = typeof date === 'string' ? new Date(date) : date;
-  
+
   const defaultOptions: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
-  
+
   return dateObj.toLocaleDateString('es-ES', { ...defaultOptions, ...options });
 };
 
 export const formatTime = (date: string | Date): string => {
   const dateObj = typeof date === 'string' ? new Date(date) : date;
-  return dateObj.toLocaleTimeString('es-ES', { 
-    hour: '2-digit', 
-    minute: '2-digit' 
+  return dateObj.toLocaleTimeString('es-ES', {
+    hour: '2-digit',
+    minute: '2-digit'
   });
 };
 
@@ -86,13 +86,13 @@ export const formatTimeUntil = (date: string | Date): string => {
   const dateObj = typeof date === 'string' ? new Date(date) : date;
   const now = new Date();
   const diffMs = dateObj.getTime() - now.getTime();
-  
+
   if (diffMs <= 0) return 'Ya es hora';
-  
+
   const diffMin = Math.floor(diffMs / (1000 * 60));
   const diffHour = Math.floor(diffMin / 60);
   const diffDay = Math.floor(diffHour / 24);
-  
+
   if (diffMin < 60) return `en ${diffMin} min`;
   if (diffHour < 24) return `en ${diffHour}h ${diffMin % 60}m`;
   return `en ${diffDay} día${diffDay === 1 ? '' : 's'}`;
@@ -118,10 +118,10 @@ export const getCurrentWeekRange = (): { start: string; end: string } => {
   const now = new Date();
   const monday = new Date(now);
   monday.setDate(now.getDate() - now.getDay() + 1);
-  
+
   const sunday = new Date(monday);
   sunday.setDate(monday.getDate() + 6);
-  
+
   return {
     start: getDateString(monday),
     end: getDateString(sunday),
@@ -133,7 +133,7 @@ export const getCurrentMonthRange = (): { start: string; end: string } => {
   const now = new Date();
   const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
   const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-  
+
   return {
     start: getDateString(firstDay),
     end: getDateString(lastDay),
