@@ -1,10 +1,10 @@
-import type { 
-  LoginRequest, 
-  RegisterRequest, 
-  AuthResponse, 
-  User, 
-  UserProfile, 
-  UserProfileFormData 
+import type {
+  AuthResponse,
+  LoginRequest,
+  RegisterRequest,
+  User,
+  UserProfile,
+  UserProfileFormData
 } from '../types';
 import { apiService } from './apiService';
 
@@ -12,36 +12,42 @@ export class AuthService {
   // Autenticación
   async login(credentials: LoginRequest): Promise<AuthResponse> {
     const response = await apiService.publicRequest<AuthResponse>('POST', '/auth/login/', credentials);
-    
+
     // Guardar tokens después del login exitoso
     if (response.tokens) {
       apiService.setAuthTokens(response.tokens);
     }
-    
+
     return response;
   }
 
   async register(userData: RegisterRequest): Promise<AuthResponse> {
     const response = await apiService.publicRequest<AuthResponse>('POST', '/auth/register/', userData);
-    
+
     // Guardar tokens después del registro exitoso
     if (response.tokens) {
       apiService.setAuthTokens(response.tokens);
     }
-    
+
     return response;
   }
 
   async loginWithGoogle(googleToken: string): Promise<AuthResponse> {
-    const response = await apiService.publicRequest<AuthResponse>('POST', '/auth/google/', {
-      token: googleToken
+    console.log('🚀 AuthService: Sending Google token to backend');
+    const response = await apiService.publicRequest<AuthResponse>('POST', '/auth/google-oauth/', {
+      credential: googleToken
     });
-    
+
+    console.log('✅ AuthService: Backend response:', response);
+
     // Guardar tokens después del login exitoso con Google
     if (response.tokens) {
+      console.log('💾 Saving tokens to localStorage:', response.tokens);
       apiService.setAuthTokens(response.tokens);
+    } else {
+      console.warn('⚠️ No tokens field in response!', response);
     }
-    
+
     return response;
   }
 
