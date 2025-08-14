@@ -8,7 +8,7 @@
  */
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,21 +16,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './hooks';
 
-// Componentes de layout
+// Componentes de layout (no lazy, se necesitan inmediatamente)
 import Layout from './components/Layout/Layout';
 import PublicLayout from './components/Layout/PublicLayout';
+import { PageLoader } from './components/LoadingSpinner';
 
-// Páginas
-import Analytics from './pages/Analytics/Analytics';
-import Login from './pages/Auth/Login';
-import Register from './pages/Auth/Register';
-import Dashboard from './pages/Dashboard/Dashboard';
-import MedicationForm from './pages/Medications/MedicationForm';
-import Medications from './pages/Medications/Medications';
-import Monitoring from './pages/Monitoring/Monitoring';
-import Notifications from './pages/Notifications/Notifications';
-import Profile from './pages/Profile/Profile';
-import Schedules from './pages/Schedules/Schedules';
+// Lazy loading de páginas
+const Analytics = React.lazy(() => import('./pages/Analytics/Analytics'));
+const Login = React.lazy(() => import('./pages/Auth/Login'));
+const Register = React.lazy(() => import('./pages/Auth/Register'));
+const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
+const MedicationForm = React.lazy(() => import('./pages/Medications/MedicationForm'));
+const Medications = React.lazy(() => import('./pages/Medications/Medications'));
+const Monitoring = React.lazy(() => import('./pages/Monitoring/Monitoring'));
+const Notifications = React.lazy(() => import('./pages/Notifications/Notifications'));
+const Profile = React.lazy(() => import('./pages/Profile/Profile'));
+const Schedules = React.lazy(() => import('./pages/Schedules/Schedules'));
+const Users = React.lazy(() => import('./pages/Users/Users'));
 
 // Componente para rutas protegidas
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -75,14 +77,18 @@ function App() {
               <Route path="/login" element={
                 <PublicRoute>
                   <PublicLayout>
-                    <Login />
+                    <Suspense fallback={<PageLoader />}>
+                      <Login />
+                    </Suspense>
                   </PublicLayout>
                 </PublicRoute>
               } />
               <Route path="/register" element={
                 <PublicRoute>
                   <PublicLayout>
-                    <Register />
+                    <Suspense fallback={<PageLoader />}>
+                      <Register />
+                    </Suspense>
                   </PublicLayout>
                 </PublicRoute>
               } />
@@ -91,63 +97,90 @@ function App() {
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Layout>
-                    <Dashboard />
+                    <Suspense fallback={<PageLoader />}>
+                      <Dashboard />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/medications" element={
                 <ProtectedRoute>
                   <Layout>
-                    <Medications />
+                    <Suspense fallback={<PageLoader />}>
+                      <Medications />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/medications/new" element={
                 <ProtectedRoute>
                   <Layout>
-                    <MedicationForm />
+                    <Suspense fallback={<PageLoader />}>
+                      <MedicationForm />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/medications/:id/edit" element={
                 <ProtectedRoute>
                   <Layout>
-                    <MedicationForm />
+                    <Suspense fallback={<PageLoader />}>
+                      <MedicationForm />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/schedules" element={
                 <ProtectedRoute>
                   <Layout>
-                    <Schedules />
+                    <Suspense fallback={<PageLoader />}>
+                      <Schedules />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/notifications" element={
                 <ProtectedRoute>
                   <Layout>
-                    <Notifications />
+                    <Suspense fallback={<PageLoader />}>
+                      <Notifications />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/analytics" element={
                 <ProtectedRoute>
                   <Layout>
-                    <Analytics />
+                    <Suspense fallback={<PageLoader />}>
+                      <Analytics />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <Layout>
-                    <Profile />
+                    <Suspense fallback={<PageLoader />}>
+                      <Profile />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
               <Route path="/monitoring" element={
                 <ProtectedRoute>
                   <Layout>
-                    <Monitoring />
+                    <Suspense fallback={<PageLoader />}>
+                      <Monitoring />
+                    </Suspense>
+                  </Layout>
+                </ProtectedRoute>
+              } />
+              <Route path="/users" element={
+                <ProtectedRoute>
+                  <Layout>
+                    <Suspense fallback={<PageLoader />}>
+                      <Users />
+                    </Suspense>
                   </Layout>
                 </ProtectedRoute>
               } />
