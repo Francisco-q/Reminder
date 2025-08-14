@@ -8,6 +8,7 @@ import {
   Monitor,
   Pill,
   User,
+  Users,
   X,
 } from 'lucide-react';
 import React, { useState } from 'react';
@@ -20,6 +21,7 @@ const navigation = [
   { name: 'Horarios', href: '/schedules', icon: Calendar },
   { name: 'Notificaciones', href: '/notifications', icon: Bell },
   { name: 'Analytics', href: '/analytics', icon: BarChart3 },
+  { name: 'Usuarios', href: '/users', icon: Users },
   { name: 'Monitoreo', href: '/monitoring', icon: Monitor },
   { name: 'Perfil', href: '/profile', icon: User },
 ];
