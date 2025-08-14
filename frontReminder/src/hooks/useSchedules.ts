@@ -62,11 +62,11 @@ export const useTodaySchedules = () => {
 
   // Calcular estadísticas localmente
   const stats = {
-    total: schedules.length,
-    completed: schedules.filter(s => s.taken).length,
-    pending: schedules.filter(s => !s.taken && new Date(s.scheduled_time) > new Date()).length,
-    overdue: schedules.filter(s => !s.taken && new Date(s.scheduled_time) <= new Date()).length,
-    adherence: schedules.length > 0 ? Math.round((schedules.filter(s => s.taken).length / schedules.length) * 100) : 0,
+    total: schedules?.length || 0,
+    completed: schedules?.filter(s => s.taken).length || 0,
+    pending: schedules?.filter(s => !s.taken && new Date(s.scheduled_time) > new Date()).length || 0,
+    overdue: schedules?.filter(s => !s.taken && new Date(s.scheduled_time) <= new Date()).length || 0,
+    adherence: schedules?.length > 0 ? Math.round(((schedules?.filter(s => s.taken).length || 0) / schedules.length) * 100) : 0,
   };
 
   return {

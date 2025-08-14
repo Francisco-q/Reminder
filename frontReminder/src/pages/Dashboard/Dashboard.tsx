@@ -160,8 +160,8 @@ const Dashboard: React.FC = () => {
                     </div>
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${new Date(`${schedule.date}T${schedule.scheduled_time}`) > new Date()
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : 'bg-red-100 text-red-800'
+                        ? 'bg-yellow-100 text-yellow-800'
+                        : 'bg-red-100 text-red-800'
                         }`}
                     >
                       {new Date(`${schedule.date}T${schedule.scheduled_time}`) > new Date()
@@ -196,8 +196,8 @@ const Dashboard: React.FC = () => {
                   <div
                     key={notification.id}
                     className={`p-3 rounded-md border ${notification.is_read
-                        ? 'bg-gray-50 border-gray-200'
-                        : 'bg-blue-50 border-blue-200'
+                      ? 'bg-gray-50 border-gray-200'
+                      : 'bg-blue-50 border-blue-200'
                       }`}
                   >
                     <div className="flex items-start justify-between">
