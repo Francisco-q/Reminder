@@ -43,6 +43,30 @@ export class AnalyticsService {
     return apiService.get('/analytics/stats/');
   }
 
+  // Obtener análisis completo para dashboard de analytics
+  async getAnalytics(period: 'week' | 'month' | 'year' = 'month'): Promise<{
+    medicationStats: {
+      totalMedications: number;
+      activeMedications: number;
+      lowStockMedications: number;
+      medicationsByType: { [key: string]: number };
+    };
+    adherenceStats: {
+      totalSchedules: number;
+      completedSchedules: number;
+      missedSchedules: number;
+      adherenceRate: number;
+      weeklyAdherence: number[];
+    };
+    userStats: {
+      totalUsers: number;
+      activeUsers: number;
+      newUsersThisMonth: number;
+    };
+  }> {
+    return apiService.get(`/analytics/dashboard/?period=${period}`);
+  }
+
   // Tendencias
   async getAdherenceTrends(days = 30): Promise<{
     dates: string[];
