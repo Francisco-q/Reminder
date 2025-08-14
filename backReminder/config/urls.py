@@ -23,10 +23,10 @@ urlpatterns = [
     path('api/auth/', include('apps.authentication.urls')),
     
     # Vertical Slices - Organized by domain features
-    # path('api/medications/', include('apps.medications.urls')),      # **COMENTADO temporalmente (ArrayField/PostgreSQL)**
-    # path('api/schedules/', include('apps.schedules.urls')),          # **COMENTADO temporalmente (depende de medications)**
-    path('api/notifications/', include('apps.notifications.urls')), # **NUEVO - HABILITADO**
-    # path('api/analytics/', include('apps.analytics.urls')),        # Commented - app doesn't exist
+    path('api/medications/', include('apps.medications.urls')),      # **HABILITADO - PostgreSQL configurado**
+    path('api/schedules/', include('apps.schedules.urls')),          # **HABILITADO - depende de medications**
+    path('api/notifications/', include('apps.notifications.urls')), # **HABILITADO**
+    path('api/analytics/', include('apps.analytics.urls')),         # **HABILITADO - básico creado**
     path('api/users/', include('apps.users.urls')),
     path('api/monitoring/', include('apps.monitoring.urls')),        # **RE-HABILITADO**
     

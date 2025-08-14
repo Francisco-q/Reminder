@@ -46,11 +46,11 @@ LOCAL_APPS = [
     'apps.core',           # Shared utilities and base classes
     'apps.users',          # User management
     'apps.authentication', # Auth & JWT tokens
-    # 'apps.medications',    # Medication CRUD & management - **COMENTADO temporalmente (usa ArrayField/PostgreSQL)**
-    # 'apps.schedules',      # Daily schedules & timing - **COMENTADO temporalmente (depende de medications)**
+    'apps.medications',    # Medication CRUD & management - **HABILITADO para PostgreSQL**
+    'apps.schedules',      # Daily schedules & timing - **HABILITADO**
     'apps.notifications',  # Push notifications & alerts - **CREADO y habilitado**
-    # 'apps.analytics',      # Progress tracking & statistics (comentado temporalmente)
-    'apps.monitoring',     # System monitoring & frontend-backend sync - **RE-HABILITADO con SQLite**
+    'apps.analytics',      # Progress tracking & statistics - **CREADO**
+    'apps.monitoring',     # System monitoring & frontend-backend sync - **RE-HABILITADO**
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
