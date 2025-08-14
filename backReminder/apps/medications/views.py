@@ -9,8 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.db.models import Q
 
-from .models import Medication, MedicationHistory, MedicationReminder
-from .serializers import MedicationSerializer, MedicationHistorySerializer, MedicationReminderSerializer
+from .models import Medication, MedicationHistory
+from .serializers import MedicationSerializer, MedicationHistorySerializer
 
 
 class MedicationViewSet(viewsets.ModelViewSet):
@@ -51,30 +51,3 @@ class MedicationHistoryViewSet(viewsets.ModelViewSet):
     
     def get_queryset(self):
         return MedicationHistory.objects.filter(medication__user=self.request.user)
-
-
-class MedicationReminderViewSet(viewsets.ModelViewSet):
-    """ViewSet for medication reminders"""
-    serializer_class = MedicationReminderSerializer
-    permission_classes = [IsAuthenticated]
-    
-    def get_queryset(self):
-        return MedicationReminder.objects.filter(medication__user=self.request.user)
-    
-    @action(detail=False, methods=['get'])
-    def upcoming(self, request):
-        """Get upcoming reminders for today"""
-        from django.utils import timezone
-        today = timezone.now().date()
-        
-        reminders = self.get_queryset().filter(
-            is_active=True,
-            medication__is_active=True
-        )
-        
-        serializer = self.get_serializer(reminders, many=True)
-        return Response({
-            'date': today,
-            'reminders': serializer.data,
-            'total': len(serializer.data)
-        })
