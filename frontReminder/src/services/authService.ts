@@ -39,11 +39,16 @@ export class AuthService {
     });
 
     console.log('✅ AuthService: Backend response:', response);
+    console.log('🔍 Tokens in response:', response.tokens);
 
     // Guardar tokens después del login exitoso con Google
     if (response.tokens) {
       console.log('💾 Saving tokens to localStorage:', response.tokens);
       apiService.setAuthTokens(response.tokens);
+      
+      // Verificar que se guardaron
+      const stored = localStorage.getItem('auth_tokens');
+      console.log('🔄 Stored tokens check:', stored);
     } else {
       console.warn('⚠️ No tokens field in response!', response);
     }
